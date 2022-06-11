@@ -1,0 +1,76 @@
+%\chapter*{Неделя 8}
+\protect\thispagestyle{fancy}
+\section{}
+Пусть $\Capit{X}(z) = \dfrac{1}{(1 - az^{-1})(1 - bz^{-1})}$.
+\begin{enumerate}[label=(\alph*)]
+	\item Найти обратное $\Capit{Z}$-преобразование функции $\Capit{X}(z)$ методом разложения на простые дроби.
+	\item Определить последовательность $x[k]$, если $a = 0.5 + 0.5j$ и $b = a^* = 0.5 - 0.5j$.
+\end{enumerate}
+
+\begin{equation*}
+	\Capit{X}(z) = \dfrac{\alpha}{1 - az^{-1}} + \dfrac{\beta}{1 - bz^{-1}}.
+\end{equation*}
+
+\begin{equation*}
+	\alpha  = \dfrac{1}{1 - bz^{-1}}\Big|_{z = a} = \dfrac{1}{1 - \frac{b}{a}} = \dfrac{a}{a - b}, \qquad
+	\beta  = \dfrac{1}{1 - az^{-1}}\Big|_{z = b} = \dfrac{1}{1 - \frac{a}{b}} = \dfrac{-b}{a - b}.
+\end{equation*}
+
+\begin{equation*}
+	\Capit{X}(z) = \dfrac{1}{a - b} \left[ \dfrac{a}{1 - az^{-1}} - \dfrac{b}{1 - bz^{-1}} \right].
+\end{equation*}
+
+\begin{align*}
+	\dfrac{1}{1 - cz^{-1}} \xlongleftrightarrow{\Capit{Z}} c^k \s{u}[k], \Rightarrow
+	\Capit{X}(z) \xlongleftrightarrow{\Capit{Z}} 
+	x[k] = \dfrac{ a^{k+1} - b^{k+1}}{a - b}\s{u}[k] = \dfrac{(1 + j)^{k+1} - (1 - j)^{k+1}}{j2^{k+1}} \s{u}[k],\\
+	\text{ROC} = \{z: |z| > 0.5\}.
+\end{align*}
+
+\section{}
+Используя основную теорему о вычетах, найти обратное $\Capit{Z}$-преобразование функции
+\begin{equation*}
+	\Capit{X}(z) = \dfrac{z^{-1}}{1 - z^{-1} + 0.25z^{-2}}.
+\end{equation*}
+
+\begin{equation*}
+	\Capit{X}(z) = \dfrac{z^{-1}}{1 - z^{-1} + 0.25z^{-2}} = \dfrac{z}{z^2 - z + 0.25} = \dfrac{z}{(z - 0.5)^2}.
+\end{equation*}
+
+\begin{align*}
+	x[k] = \dfrac{1}{2 \pi j} \oint \limits_{\gamma} \Capit{X}(z) z^{k-1} dz = 
+	\dfrac{1}{2 \pi j} \oint \limits_{\gamma} \dfrac{z^k dz}{(z - 0.5)^2} = 
+	\underset{z_p = 0.5}{\text{res}} \dfrac{z^k}{(z - 0.5)^2} \cdot \s{u}[k] = \lim \limits_{z \to 0.5} \dfrac{dz^k}{dz} \cdot \s{u}[k] = k \left(\dfrac{1}{2}\right)^{k-1} \s{u}[k],\\
+	\text{ROC} = \{z: |z| > 0.5\}.
+\end{align*}
+
+
+
+
+
+\section{}
+Методом разложения на простые дроби найти последовательность $x[k]$ по известному $z$-изображению
+\begin{equation*}
+	\Capit{X}(z) = \dfrac{1}{1 - 0.5z^{-1} + 0.06z^{-2}}.
+\end{equation*}
+
+\begin{equation*}
+	\Capit{X}(z) = \dfrac{1}{1 - 0.5z^{-1} + 0.06z^{-2}} = \dfrac{1}{(1 - 0.3z^{-1})(1 - 0.2z^{-1})} = \dfrac{\alpha}{1 - 0.3z^{-1}} + \dfrac{\beta}{1 - 0.2z^{-1}}.
+\end{equation*}
+
+\begin{equation*}
+	\alpha  = \dfrac{1}{1 - 0.2z^{-1}}\Big|_{z = 0.3} = \dfrac{1}{1 - \frac{2}{3}} = 3, \qquad
+	\beta  = \dfrac{1}{1 - 0.3z^{-1}}\Big|_{z = 0.2} = \dfrac{1}{1 - \frac{3}{2}} = -2.
+\end{equation*}
+
+\begin{equation*}
+	\Capit{X}(z) = \dfrac{3}{1 - 0.3z^{-1}} - \dfrac{2}{1 - 0.2z^{-1}}.
+\end{equation*}
+
+\begin{align*}
+	\dfrac{1}{1 - az^{-1}} \xlongleftrightarrow{\Capit{Z}} a^k \s{u}[k], \Rightarrow
+	\Capit{X}(z) \xlongleftrightarrow{\Capit{Z}} 
+	x[k] = 3 \left(\frac{3}{10}\right)^k \s{u}[k] - 2 \left(\frac{2}{10}\right)^k \s{u}[k] = 
+	\dfrac{3^{k+1} - 2^{k+1}}{10^k} \s{u}[k],\\
+	\text{ROC} = \{z: |z| > 0.3\}.
+\end{align*}
